@@ -65,8 +65,7 @@ if user_input:
         st.markdown(user_input)
 
     with st.chat_message("assistant"):
-        with st.spinner("애순이가 답변을 생각하고 있어요..."):
-          
+    with st.spinner("애순이가 답변을 생각하고 있어요..."):
         try:
             payload = { "message": user_input }
             response = requests.post("https://chungho-aesoon.fly.dev/chat", json=payload)
