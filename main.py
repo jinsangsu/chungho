@@ -66,11 +66,12 @@ if user_input:
 
     with st.chat_message("assistant"):
         with st.spinner("애순이가 답변을 생각하고 있어요..."):
-            try:
-                          payload = { "message": user_input }
-      response = requests.post("https://chungho-aesoon.fly.dev/chat", json=payload)
-                reply = response.json().get("reply", "애순이가 지금은 답변을 드릴 수 없어요.")
-                st.markdown(reply)
-                st.session_state.messages.append({"role": "assistant", "content": reply})
-            except Exception as e:
-                st.error("❌ 애순이 응답을 받지 못했어요. 네트워크 또는 서버 오류일 수 있어요.")
+          
+        try:
+            payload = { "message": user_input }
+            response = requests.post("https://chungho-aesoon.fly.dev/chat", json=payload)
+            reply = response.json().get("reply", "애순이가 지금은 답변을 드릴 수 없어요.")
+            st.markdown(reply)
+            st.session_state.messages.append({"role": "assistant", "content": reply})
+        except Exception as e:
+            st.error("❌ 애순이 응답을 받지 못했어요. 네트워크 또는 서버 오류일 수 있어요.")
